@@ -282,6 +282,9 @@ class Compiler:
     elif output_dir == 'shadow':
       shadow_folders = True
       output_dir = re.sub('less', 'css', file_dir)
+    elif output_dir.startswith('$'):
+      output_dir = re.sub('^\$', '', output_dir)
+      output_dir = os.path.normpath(os.path.join(file_dir, output_dir))
 
     # find project path
     # you can have multiple folders at the top level in a project but there is no way
