@@ -282,6 +282,8 @@ class Compiler:
     elif output_dir == 'shadow':
       shadow_folders = True
       output_dir = re.sub('less', 'css', file_dir)
+    elif output_dir == 'parent_less':
+      output_dir = re.sub('less/', '', file_dir)
     elif output_dir.startswith('$'):
       output_dir = re.sub('^\$', '', output_dir)
       output_dir = os.path.normpath(os.path.join(file_dir, output_dir))
